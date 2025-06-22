@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hasil Prediksi Cabai</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+  <style>
+    body {
+      background-color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .result-title {
+      font-size: 26px;
+      font-weight: 700;
+      margin-top: 30px;
+    }
+    .image-pair {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+    .image-pair img {
+      width: 320px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    .badge-predict {
+      font-size: 20px;
+      padding: 12px 28px;
+      margin-top: 10px;
+    }
+    .feature-table {
+      margin-top: 50px;
+    }
+    table th, table td {
+      text-align: center;
+      vertical-align: middle;
+    }
+    .btn-outline-primary {
+      padding: 10px 20px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="container text-center">
+    <h2 class="result-title">Hasil Prediksi Kematangan Cabai</h2>
+    <span class="badge badge-primary badge-predict">{{ result }}</span>
+
+    <div class="image-pair">
+      <div>
+        <p><strong>Gambar Asli</strong></p>
+        <img src="{{ image_path }}" alt="Gambar Cabai Asli" />
+      </div>
+      <div>
+        <p><strong>Deteksi Tepi Sobel</strong></p>
+        <img src="{{ sobel_path }}" alt="Gambar Sobel" />
+      </div>
+    </div>
+
+    <div class="feature-table">
+      <h4 class="mt-5 mb-3">Fitur GLCM & HSV yang Diekstraksi</h4>
+      <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th>Fitur</th>
+            <th>Nilai</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for label, value in features %}
+          <tr>
+            <td>{{ label }}</td>
+            <td>{{ value }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <a href="{{ url_for('index') }}" class="btn btn-outline-primary mt-4">&larr; Kembali ke Beranda</a>
+  </div>
+</body>
+</html>

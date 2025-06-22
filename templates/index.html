@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Deteksi Kematangan Cabai</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .upload-box {
+      width: 100%;
+      max-width: 480px;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      background-color: #ffffff;
+    }
+    h2 {
+      font-weight: 600;
+      font-size: 26px;
+      margin-bottom: 20px;
+      color:rgb(255, 0, 0);
+      text-align: center;
+    }
+    .custom-file-input {
+      cursor: pointer;
+    }
+    .btn-upload {
+      background-color: #2e7d32;
+      color: white;
+      font-weight: 500;
+      border-radius: 8px;
+    }
+    .btn-upload:hover {
+      background-color: #256629;
+    }
+    .note {
+      font-size: 13px;
+      color: #777;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="upload-box">
+    <h2>Deteksi Kematangan Cabai</h2>
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="image">Pilih Gambar Cabai</label>
+        <input type="file" class="form-control-file" name="image" id="image" required>
+      </div>
+      <button type="submit" class="btn btn-upload btn-block mt-3">Prediksi Sekarang</button>
+    </form>
+    <p class="note">Gunakan gambar dengan resolusi minimal 256x256 piksel untuk hasil terbaik.</p>
+  </div>
+</body>
+</html>
